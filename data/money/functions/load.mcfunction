@@ -5,10 +5,14 @@ scoreboard players set #hundred money_helper 100
 scoreboard players set #ten money_helper 10
 scoreboard players set #limit money_helper 10
 scoreboard players set #min money_helper -2000000000
+scoreboard players set #one money_helper 1
+scoreboard players set #neg_one money_helper -1
 scoreboard players set #rank money_helper 0
 scoreboard players set #max money_helper 0
 scoreboard players set #dollars money_helper 0
 scoreboard players set #cents money_helper 0
+scoreboard players set #balance_abs money_helper 0
+scoreboard players set #sign money_helper 0
 scoreboard players set #debug money_helper 0
 scoreboard players set #self_balance money_helper 0
 scoreboard players set #self_rank money_helper 0

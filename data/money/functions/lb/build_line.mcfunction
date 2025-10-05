@@ -1,16 +1,23 @@
-scoreboard players operation #dollars money_helper = @s money
+scoreboard players operation #balance_abs money_helper = @s money
+execute if score #balance_abs money_helper matches ..-1 run scoreboard players operation #balance_abs money_helper *= #neg_one money_helper
+scoreboard players operation #dollars money_helper = #balance_abs money_helper
 scoreboard players operation #dollars money_helper /= #hundred money_helper
-scoreboard players operation #cents money_helper = @s money
+scoreboard players operation #cents money_helper = #balance_abs money_helper
 scoreboard players operation #cents money_helper %= #hundred money_helper
+scoreboard players set #sign money_helper 0
+execute if score @s money matches ..-1 run scoreboard players operation #sign money_helper = #one money_helper
 data modify storage money:board temp set value {}
 execute store result storage money:board temp.rank int 1 run scoreboard players get @s money_rank
 execute store result storage money:board temp.dollars int 1 run scoreboard players get #dollars money_helper
 execute store result storage money:board temp.cents int 1 run scoreboard players get #cents money_helper
+data modify storage money:board temp.sign set value ""
+execute if score #sign money_helper matches 1.. run data modify storage money:board temp.sign set value "-"
 data modify storage money:board temp.line set value {"text":"","extra":[]}
 data modify storage money:board temp.line.extra append value {"nbt":"temp.rank","storage":"money:board","color":"gold","bold":true}
 data modify storage money:board temp.line.extra append value {"text":". ","color":"gold"}
 data modify storage money:board temp.line.extra append value {"selector":"@s","color":"white"}
 data modify storage money:board temp.line.extra append value {"text":" - $","color":"yellow"}
+data modify storage money:board temp.line.extra append value {"nbt":"temp.sign","storage":"money:board","color":"yellow"}
 data modify storage money:board temp.line.extra append value {"nbt":"temp.dollars","storage":"money:board","color":"yellow"}
 data modify storage money:board temp.line.extra append value {"text":".","color":"yellow"}
 execute if score #cents money_helper < #ten money_helper run data modify storage money:board temp.line.extra append value {"text":"0","color":"yellow"}
