@@ -9,6 +9,9 @@ scoreboard players set #rank money_helper 0
 scoreboard players set #max money_helper 0
 scoreboard players set #dollars money_helper 0
 scoreboard players set #cents money_helper 0
+scoreboard players set #debug money_helper 0
+scoreboard players set #self_balance money_helper 0
+scoreboard players set #self_rank money_helper 0
 data modify storage money:board lines set value []
 data modify storage money:board text set value {"text":"Money Leaderboard","color":"gold","bold":true}
 tag @a remove money.lb_selected
