@@ -2,8 +2,6 @@
 
 This data pack adds a persistent, floating money leaderboard that updates automatically from a scoreboard-based currency system.
 
-> **Installation note:** Copy the folder into your world's `datapacks` directory and run `/reload` (or restart the world/server). The pack targets Minecraft **1.20.5+**—older versions will refuse to load it and the commands below will show as "Unknown function".
-
 ## Currency storage
 
 * Player balances are stored in the `money` scoreboard objective as **cents** (e.g. `$12.34` is stored as `1234`).
